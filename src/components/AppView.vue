@@ -7,7 +7,7 @@
         <el-header v-if="hideslid" style>
           <BackHeader @flod="flod"></BackHeader>
         </el-header>
-        <el-main>
+        <el-main style="display: flex;flex-direction: column;background:#fff;">
           <el-row v-if="hideslid">
             <el-col :span="24" class="titpath">
               <div class="grid-content bg-purple-dark">
@@ -140,6 +140,9 @@ body > .el-container {
   }
   span:hover {
     color: #2d8cf0;
+  }
+  .main{
+    
   }
 }
 </style>

@@ -2,12 +2,13 @@
   <div class="hello">
     <div class="logo" @click="goIndex">Logo</div>
     <!-- 初始列表选项 -->
-    <div v-if="menulist">
+    <div>
       <el-menu
         :default-active="'1'"        
         class="el-menu-vertical-demo"
         @open="handleOpen"
         @close="handleClose"
+        @select = "hiddenmenu"
         background-color="#545c64"
         text-color="#fff"
         active-text-color="#ffd04b"
@@ -21,7 +22,7 @@
             <i class="el-icon-location"></i>
             <span>{{item.title}}</span>
           </template>
-          <el-menu-item-group>
+          <el-menu-item-group >
             <el-menu-item :index="item.href">{{item.children[0]}}</el-menu-item>
             <el-menu-item :index="item.href2">{{item.children[1]}}</el-menu-item>
           </el-menu-item-group>
@@ -52,7 +53,7 @@ export default {
           title: "首页一",
           children: ["首页1.1", "首页1.2"],
           href:"/index1-1",
-          href2:"/index1-2"
+          href2:"/index1-2",
         },
         {
           title: "首页二",
@@ -110,13 +111,12 @@ export default {
       ]
     };
   },
-  updated() {},
   methods: {
     handleOpen(key, keyPath) {
-      console.log("&&&&&&&&&&&&");
+      console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
-      console.log("&&&&&&&&&&&&");
+      console.log(key, keyPath);
     },
     str(val) {
       return val.toString();
@@ -132,6 +132,9 @@ export default {
     },
     goIndex(){
       this.$router.push("/home")
+    },
+    hiddenmenu(path){
+
     }
   }
 };
