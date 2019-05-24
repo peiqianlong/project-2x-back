@@ -29,7 +29,6 @@ export default {
           username: 'lvcq',
           password: '123456'
       }).then(res => {
-        debugger
         if (res) {
           this.$message({
             message: "数据获取成功",

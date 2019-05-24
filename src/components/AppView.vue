@@ -123,7 +123,6 @@ body > .el-container {
   box-sizing: border-box;
   font-size: 14px;
   padding-left: 30px;
-  margin-bottom: 24px;
 }
 .grid-content {
   // 禁止文字选择
