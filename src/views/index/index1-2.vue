@@ -8,6 +8,7 @@
           :init="editorinit"
           v-model="content"
         ></editor>
+        <textarea cols="30" rows="10" v-model="content" class="textcontent"></textarea>
       </div>
       <div class="mainright">
         <h4 class="tit">权限设置</h4>
@@ -56,8 +57,15 @@
             :value="item.value"
           ></el-option>
         </el-select>
+        <div class="save">
+          <el-button type="primary" plain >保存为草稿</el-button>
+          <el-button type="primary" plain @click="sive">保存</el-button>
+        </div>
       </div>
     </div>
+    <!-- <el-dialog title="预览编辑" :visible.sync="centerDialogVisible" width="75%" top="1%" style="height:98%;overflow:hidden" center>
+      <div ref="htmls" class="preview"></div>
+    </el-dialog>-->
   </div>
 </template>
 
@@ -70,6 +78,7 @@ export default {
   },
   data() {
     return {
+      centerDialogVisible: false,
       content: "",
       editorinit: {
         selector: "textarea#full-featured",
@@ -129,6 +138,11 @@ export default {
       ],
       value7: ""
     };
+  },
+  methods: {
+    sive() {
+      
+    }
   }
 };
 </script>
@@ -137,11 +151,11 @@ export default {
   flex: 1;
 }
 .mainbox {
-  height: 80%;
+  height: 100%;
   display: flex;
   .editor {
     width: 85%;
-    height: 100%;
+    height: 80%;
   }
   .mainright {
     width: 15%;
@@ -152,6 +166,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: start;
+    position: relative;
     .tit {
       margin: 5px 0;
       margin-bottom: 15px;
@@ -167,6 +182,19 @@ export default {
       }
     }
   }
+}
+.textcontent {
+  width: 100%;
+  box-sizing: border-box;
+}
+.save {
+  position: absolute;
+  bottom: 3%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  left: 50%;
+  transform: translateX(-50%);
 }
 </style>
 
