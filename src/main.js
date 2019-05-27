@@ -17,6 +17,10 @@ Vue.prototype.uploadFileRequest = uploadFileRequest
 Vue.prototype.putRequest = putRequest
 Vue.prototype.deleteRequest = deleteRequest
 
+
+// echarts图
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

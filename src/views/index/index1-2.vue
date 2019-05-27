@@ -8,7 +8,7 @@
           :init="editorinit"
           v-model="content"
         ></editor>
-        <textarea cols="30" rows="10" v-model="content" class="textcontent"></textarea>
+        <textarea cols="30" rows="10" v-model="content" class="textcontent" placeholder="源代码"></textarea>
       </div>
       <div class="mainright">
         <h4 class="tit">权限设置</h4>
@@ -58,7 +58,7 @@
           ></el-option>
         </el-select>
         <div class="save">
-          <el-button type="primary" plain >保存为草稿</el-button>
+          <el-button type="primary" plain>保存为草稿</el-button>
           <el-button type="primary" plain @click="sive">保存</el-button>
         </div>
       </div>
@@ -81,14 +81,24 @@ export default {
       centerDialogVisible: false,
       content: "",
       editorinit: {
-        selector: "textarea#full-featured",
+        selector: "textarea",
         plugins:
-          "wordcount link image print preview fullpage powerpaste searchreplace autolink directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount tinymcespellchecker a11ychecker imagetools textpattern help formatpainter permanentpen pageembed mentions linkchecker",
+          "wordcount link image print preview fullpage powerpaste searchreplace autolink directionality advcode visualblocks visualchars fullscreen image code link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount tinymcespellchecker a11ychecker imagetools textpattern help formatpainter permanentpen pageembed mentions linkchecker",
         language_url: `../../../static/tinymce/langs/zh_CN.js`,
         language: "zh_CN",
+        browser_spellcheck: true,
+        contextmenu: false,
         toolbar:
-          "formatselect | bold italic strikethrough forecolor backcolor permanentpen formatpainter | link image media pageembed | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent | removeformat | addcomment",
+          "formatselect | bold italic strikethrough forecolor backcolor permanentpen formatpainter | link undo redo  image code media pageembed | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent | removeformat | addcomment",
         image_advtab: true,
+        images_upload_url: "postAcceptor.php",
+        images_upload_handler: function(blobInfo, success, failure) {
+          debugger;
+          setTimeout(function() {
+            /* no matter what you upload, we will turn it into TinyMCE logo :)*/
+            success("http://moxiecode.cachefly.net/tinymce/v9/images/logo.png");
+          }, 1000);
+        },
         content_css: [
           "//fonts.googleapis.com/css?family=Lato:300,300i,400,400i",
           "//www.tiny.cloud/css/codepen.min.css"
@@ -140,9 +150,7 @@ export default {
     };
   },
   methods: {
-    sive() {
-      
-    }
+    sive() {}
   }
 };
 </script>

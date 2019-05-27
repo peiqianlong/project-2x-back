@@ -15,10 +15,12 @@
   "dependencies": {
     "@tinymce/tinymce-vue": "^2.0.0",
     "axios": "^0.18.0",
+    "echarts": "^4.2.1",
     "element-ui": "^2.8.2",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "vue": "^2.5.2",
+    "vue-cropper": "^0.4.9",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
